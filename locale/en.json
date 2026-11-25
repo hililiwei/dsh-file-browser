@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Files",
+    "description": "Adds a Files entry to the left sidebar: browse any directory on the host that runs DSH, sort by name, size or modified time, and download a file to your machine. Browsing is read-only — there is no preview, upload or write, and file contents never enter the page."
+  }
+}

@@ -1,0 +1,20 @@
+# dsh-file-browser bundle patch
+#
+# The row mounts the Host half (the authenticated /api/file-browser routes) and
+# the `dsh.client` declaration in package.json loads the browser half: one
+# left-sidebar panel whose main view browses the host filesystem and downloads
+# files. Disabling the row removes both the routes and the panel entry.
+- insert:
+    - id: file-browser
+      name: '@local/dsh-file-browser'
+      config:
+        # Absolute directories this panel may read. Narrow it to lock the
+        # browser into one subtree; a request outside every root is refused.
+        roots:
+          - /
+        # Listing cap per directory, so a huge directory cannot stall the page.
+        maxEntries: 2000
+        # Follow symbolic links, re-checking that the real path stays inside a root.
+        followSymlinks: true
+        # Start with dotfiles hidden; the page has its own toggle.
+        showHidden: false
